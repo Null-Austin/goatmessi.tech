@@ -78,8 +78,16 @@
       background-color: wheat;
       display: flex;
       align-items: center;
-      justify-content: center; /* optional, for horizontal centering */
       height: 100%;
+    }
+    #header .side:nth-child(1) {
+      justify-content: flex-start;
+    }
+    #header .side:nth-child(2) {
+      justify-content: center;
+    }
+    #header .side:nth-child(3) {
+      justify-content: flex-end;
     }
     .side a{
       color: black;
@@ -94,11 +102,11 @@
     <div id="header" class="part-of-content">
       <div class="side">
         <img src="/art/header.png" alt="Icon photo" id="icon"/>
-        <span>Messi is the GOAT</span>
+        <span>GOATMessi.TECH</span>
       </div>
       <div class="side">
         <span>
-          this is the middle
+          The greatest footballer of all time!
         </span>
       </div>
 
