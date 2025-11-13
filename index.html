@@ -33,7 +33,7 @@
     }
 
     #content > #header #icon {
-      width: 10vh;
+      height: 10vh;
     }
     /* Removed conflicting inline-block and vertical-align rules */
 
@@ -78,7 +78,7 @@
     }
     .side{
       width: 100%;
-      background-color: wheat;
+      /* background-color: wheat; (This was for debugging only!)*/
       display: flex;
       align-items: center;
       height: 100%;
@@ -105,6 +105,20 @@
     .side1 span{
       font-size: 32px;
     }
+    .side2 span{
+      height: 9vh;
+      padding: 0;
+      margin: 0;
+      transform: translateY(-3vh);
+    }
+    .side2 img{
+      max-height: 9vh;
+      transform: translateY(3vh);
+
+      /* https://stackoverflow.com/questions/12690444/css-border-on-png-image-with-transparent-parts */
+      -webkit-filter: drop-shadow(1px 1px 0 black) drop-shadow(-1px -1px 0 black);
+      filter: drop-shadow(1px 1px 0 black) drop-shadow(-1px -1px 0 black);
+    }
   </style>
 </head>
 
@@ -117,7 +131,7 @@
       </div>
       <div class="side side2">
         <span>
-          The greatest footballer of all time!
+          The greatest footballer <img src="./art/icon-2.png"> of all time!
         </span>
       </div>
 
