@@ -1,27 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOATMessi.TECH</title>
+  <style>
+    .part-of-content {
+      background: linear-gradient(90deg, #ff8a00, #e52e71);
+    }
+    section#content{
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+    }
+
+    #content > #headerimage{
+      grid-column: 1 / 2;
+    }
+    #content > #altimage{
+      grid-column: 1 / 1;
+    }
+    #content > #extrainfo{
+      grid-column: 2 / 2;
+    }
+    #content > #footer{
+      grid-column: 1 / 2;
+    }
+  </style>
 </head>
+
 <body>
-    <section id="content">
-        <div id="header" class="part-of-content">
-            this is the header
-        </div>
-        <div class="part-of-content" id="headerimage">
-            Imagine this as a showcase!
-        </div>
-        <div class="part-of-content" id="altimage">
-            Imagine this as a photo under the showcase!
-        </div>
-        <div class="part-of-content" id="extrainfo">
-            And imagine this as a post or any thing else!
-        </div>
-        <div class="part-of-content" id="footer">
-            This is some extra information
-        </div>
-    </section>
+  <section id="content">
+    <div id="header" class="part-of-content">
+      this is the header
+    </div>
+    <div class="part-of-content" id="headerimage">
+      Imagine this as a showcase!
+    </div>
+    <div class="part-of-content" id="altimage">
+      Imagine this as a photo under the showcase!
+    </div>
+    <div class="part-of-content" id="extrainfo">
+      And imagine this as a post or any thing else!
+    </div>
+    <div class="part-of-content" id="footer">
+      This is some extra information
+    </div>
+  </section>
 </body>
+
 </html>
