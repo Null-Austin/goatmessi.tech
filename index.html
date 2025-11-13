@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GOATMessi.TECH</title>
+  <link rel="icon" type="image/png" href="/art/header.png">
   <style>
     body, html, #content {
       margin: 0;
@@ -27,6 +28,14 @@
       padding-block: 15px;
     }
 
+    #content > #header #icon {
+      width: 10vh;
+    }
+    #content > #header *{
+      display: inline-block;
+      vertical-align: middle;
+    }
+
     #content > #header {
       grid-column: 1 / 3;
       height: 10vh;
@@ -34,6 +43,7 @@
     #content > #headerimage {
       grid-column: 1 / 3;
       height: 45vh;
+      /*background-image: url("art/header.png"); (INCORRECT PHOTO, please replace lol)*/
     }
     #content > #altimage {
       grid-column: 1 / 2;
@@ -65,7 +75,17 @@
 <body>
   <section id="content">
     <div id="header" class="part-of-content">
-      this is the header
+      <div class="side1">
+        <img src="/art/header.png" alt="Icon photo" id="icon"/>
+        <span>Messi is the GOAT</span>
+      </div>
+      <div class="side2">
+
+      </div>
+
+      <div class="side3">
+
+      </div>
     </div>
     <div class="part-of-content" id="headerimage">
       Imagine this as a showcase!
