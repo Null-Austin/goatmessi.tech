@@ -1,1 +1,155 @@
-/* put valid css here that is dedicated to making better looking ui's on any device not my computer! */
+/* General compatibility and UI improvements for all devices */
+
+// Cross-browser compatibility fixes
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Improve image rendering across browsers
+img {
+  max-width: 100%;
+  height: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+// Fix for touch devices - better tap targets
+a,
+button {
+  min-width: 44px;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+// Prevent text size adjust after orientation change
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+// Smoother scrolling on all devices
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+// Fix grid layout on smaller viewports
+#content {
+  min-height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
+
+  > * {
+    min-width: 0; // Prevent grid blowout
+  }
+}
+
+// Ensure images don't overflow their containers
+#content > #header #icon {
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.side2 img {
+  max-width: 100%;
+  object-fit: contain;
+}
+
+// Better font scaling across devices
+#content {
+  font-size: clamp(14px, 2vw, 16px);
+}
+
+.side a {
+  font-size: clamp(3vh, 5vh, 6vh);
+}
+
+#content > #headerimage h3 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  word-wrap: break-word;
+}
+
+// Improve background image scaling
+#content > #headerimage,
+#content > #altimage,
+#content > #extrainfo {
+  background-attachment: scroll; // Better performance on mobile
+}
+
+// Make borders and shadows scale better
+.part-of-content {
+  border-width: clamp(1px, 0.2vw, 2px);
+  box-shadow: 0px clamp(3px, 0.5vw, 5px) black;
+}
+
+// Improve touch interactions
+#content > #headerimage,
+#content > #altimage,
+#content > #extrainfo {
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+// Fix for Safari's 100vh issue
+#content > #headerimage,
+#content > #altimage,
+#content > #extrainfo {
+  min-height: 0;
+  height: clamp(300px, 45vh, 600px);
+}
+
+#content > #headerimage:hover,
+#content > #headerimage.selected {
+  height: clamp(400px, 75vh, 800px);
+}
+
+// Improve text readability
+#content > #headerimage {
+  p, h3 {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// Better footer spacing on all devices
+#content > #footer {
+  padding: clamp(10px, 2vh, 20px);
+  
+  span {
+    display: inline-block;
+    max-width: 90%;
+  }
+}
+
+// Improve Twitter embed responsiveness
+#extrainfo .twitter-tweet.twitter-tweet-rendered {
+  width: 100% !important;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Fix for flexbox on older browsers
+#content > #extrainfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+// Improve grid support fallback
+@supports not (display: grid) {
+  #content {
+    display: block;
+    
+    > * {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+}

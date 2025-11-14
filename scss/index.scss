@@ -1,255 +1,303 @@
 @import "fonts.scss";
-/* Todo, we migrated to SCSS, so please take advantage of it! */
 
+// SASS Variables
+$color-black: rgb(0, 0, 0);
+$color-white: white;
+$color-gray-dark: rgb(53, 53, 53);
+$color-footer-bg: rgba(36, 36, 36, 0.95);
+
+$border-radius-default: 15px;
+$border-radius-twitter: 16px;
+
+$font-nunito: "Nunito", sans-serif;
+$font-stack-sans: "Stack Sans Headline", sans-serif;
+$font-merriweather: "Merriweather", serif;
+$font-climate-crisis: "Climate Crisis", sans-serif;
+
+$spacing-default: 20px;
+$spacing-small: 10px;
+$spacing-tiny: 5px;
+
+$height-header: 10vh;
+$height-section: 45vh;
+$height-expanded: 75vh;
+$height-side2: 9vh;
+
+$transition-height: height 0.3s;
+$transition-filter: filter 0.4s;
+$transition-color-font: color 0.3s, font-size 0.5s;
+
+// Mixins
+@mixin reset-spacing {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin background-image($url, $size: cover, $position: center) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: $position;
+  background-size: $size;
+}
+
+@mixin drop-shadow-border {
+  -webkit-filter: drop-shadow(1px 1px 0 $color-black) drop-shadow(-1px -1px 0 $color-black);
+  filter: drop-shadow(1px 1px 0 $color-black) drop-shadow(-1px -1px 0 $color-black);
+}
+
+@mixin gradient-text($gradient) {
+  background: $gradient;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Base Styles
 body, 
 html,
 #content {
-  margin: 0;
-  padding: 0;
+  @include reset-spacing;
   width: 100%;
 }
+
 body,
 html {
   height: 100%;
 }
-.part-of-content {
-  border: 2px rgb(0, 0, 0) solid;
-  border-radius: 15px;
 
-  box-shadow: 0px 5px black;
+.part-of-content {
+  border: 2px $color-black solid;
+  border-radius: $border-radius-default;
+  box-shadow: 0px 5px $color-black;
 }
+
+// Content Grid
 #content {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: min-content;
   height: auto;
+  padding-top: $spacing-default;
+  font-family: $font-nunito;
 
-  padding-top: 20px;
+  > #header {
+    grid-column: 1 / 7;
+    height: $height-header;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 100%;
 
-  font-family: "Nunito", sans-serif;
+    #icon {
+      height: $height-header;
+    }
+
+    .side {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      &:nth-child(1) {
+        justify-content: flex-start;
+        font-family: $font-stack-sans;
+      }
+
+      &:nth-child(2) {
+        justify-content: center;
+        font-weight: 900;
+        font-family: $font-stack-sans;
+        font-size: 1.3rem;
+      }
+
+      &:nth-child(3) {
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  > #header,
+  > #footer {
+    border: none; 
+    box-shadow: none;
+  }
+
+  > #headerimage {
+    grid-column: 1 / 7;
+    height: $height-section;
+    @include background-image("art/messi_bg.webp", 100%, center 10%);
+    transition: $transition-height;
+    transition-delay: 100ms;
+    font-family: $font-merriweather;
+
+    &:hover,
+    &.selected {
+      height: $height-expanded;
+      transition-delay: 0ms;
+
+      .hidden {
+        display: block;
+        font-size: 16px;
+        color: $color-black;
+
+        a {
+          color: $color-black;
+        }
+      }
+    }
+
+    > p {
+      width: 25%;
+      padding-left: 2.5%;
+    }
+
+    .hidden {
+      display: block;
+      color: rgba(255, 255, 255, 0);
+      transition: $transition-color-font;
+
+      a {
+        color: $color-white;
+        color: rgba(255, 255, 255, 0);
+        transition: $transition-color-font;
+      }
+    }
+
+    h3 {
+      font-family: $font-climate-crisis;
+      font-size: 4rem;
+      padding-left: 15px;
+      @include gradient-text(linear-gradient(to bottom, #3af3f3, #23b8b8, #f86945, #ff8566));
+      -webkit-text-stroke: 1px $color-gray-dark;
+    }
+  }
+
+  > #altimage {
+    grid-column: 1 / 5;
+    @include background-image("art/icon.webp", cover, center 40%);
+    margin-right: $spacing-tiny;
+  }
+
+  > #extrainfo {
+    grid-column: 5 / 7;
+    height: $height-section;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: auto;
+    padding: 0;
+    @include background-image("art/background2.webp");
+    margin-left: $spacing-tiny;
+
+    .twitter-tweet.twitter-tweet-rendered {
+      display: flex !important;
+      width: 550px !important;
+      max-width: 100%;
+      margin-top: 15px !important;
+      margin-bottom: 15px !important;
+      border-radius: $border-radius-twitter;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+      overflow: auto !important;
+      background: #fff;
+      justify-content: center;
+      height: 400px;
+
+      iframe {
+        width: 550px !important;
+        max-width: 100%;
+        min-width: 0 !important;
+        height: 100% !important;
+        border: none;
+        display: block;
+      }
+    }
+  }
+
+  > #footer {
+    grid-column: 1 / 7;
+    height: $height-header;
+    @include flex-center;
+    z-index: 1;
+    background: $color-footer-bg;
+    border-radius: 0;
+
+    * {
+      color: $color-white;
+    }
+  }
 }
 
-#content > #header #icon {
-  height: 10vh;
-}
-/* Removed conflicting inline-block and vertical-align rules */
-
-#content > #header {
-  grid-column: 1 / 7;
-  height: 10vh;
-}
-#content > #header,
-#content > #footer {
-  border: none; 
-  box-shadow: none;
-}
-#content > #headerimage {
-  grid-column: 1 / 7;
-  height: 45vh;
-  /*background-image: url("art/header.png"); (INCORRECT PHOTO, please replace lol)*/
-
-  transition: height .3s;
-  transition-delay: 100ms;
-}
-#content > #headerimage:hover, #content > #headerimage.selected {
-  height: 75vh;
-  transition-delay: 0ms;
-}
-#content > #headerimage > p{
-    width: 25%;
-    padding-left: 2.5%;
-}
-#content > #headerimage .hidden a{
-    color: white;
-    color: rgba(255, 255, 255, 0);
-    transition: color .3s, font-size .5s;
-}
-#content > #headerimage .hidden{
-    display: block;
-    color: rgba(255, 255, 255, 0);
-    transition: color .3s, font-size .5s;
-}
-#content > #headerimage .hidden a, #content > #headerimage:hover .hidden, #content > #headerimage.selected .hidden{
-    color: rgb(0, 0, 0);
-}
-#content > #headerimage:hover .hidden, #content > #headerimage.selected .hidden{
-    display: block;
-    font-size: 16px;
-}
-#content > #altimage {
-  grid-column: 1 / 5;
-}
-#content > #extrainfo {
-  grid-column: 5 / 7;
-  height: 45vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  overflow: auto;
-  padding: 0;
-}
-#content > #footer {
-  grid-column: 1 / 7;
-  height: 10vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  background: rgba(36, 36, 36, 0.95);
-  border-radius: 0;
-}
-#content > #footer * {
-  color: white;
+// Margin utilities
+#header,
+#headerimage,
+#altimage {
+  margin-left: $spacing-default;
 }
 
-#header, #headerimage,
-    #altimage/*, #footer*/ {
-  margin-left: 20px;
+#header,
+#headerimage,
+#extrainfo {
+  margin-right: $spacing-default;
 }
-#header, #headerimage,
-    #extrainfo/*, #footer*/ {
-  margin-right: 20px;
-}
+
 #header,
 #headerimage,
 #altimage,
 #extrainfo {
-  margin-bottom: 10px;
+  margin-bottom: $spacing-small;
 }
 
-#header {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  height: 100%;
-}
+// Side navigation styles
 .side {
-  width: 100%;
-  /* background-color: wheat; (This was for debugging only!)*/
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-#header .side:nth-child(1) {
-  justify-content: flex-start;
-  font-family: "Stack Sans Headline", sans-serif;
-}
-#header .side:nth-child(2) {
-  justify-content: center;
-  font-weight: 900;
-  font-family: "Stack Sans Headline", sans-serif;
-  font-size: 1.3rem;
-}
-#header .side:nth-child(3) {
-  justify-content: flex-end;
-}
-.side a {
-  color: black;
-  font-size: 5vh;
-  text-decoration: none;
+  a {
+    color: $color-black;
+    font-size: 5vh;
+    text-decoration: none;
+  }
 }
 
-.side1 span {
-  font-size: 32px;
+.side1 {
+  span {
+    font-size: 32px;
+  }
 }
-.side2 span {
-  height: 9vh;
-  padding: 0;
-  margin: 0;
-  transform: translateY(-3vh);
+
+.side2 {
+  span {
+    height: $height-side2;
+    padding: 0;
+    margin: 0;
+    transform: translateY(-3vh);
+  }
+
+  img {
+    max-height: $height-side2;
+    transform: translateY(3vh);
+  }
 }
-.side2 img {
-  max-height: 9vh;
-  transform: translateY(3vh);
-}
-/* https://stackoverflow.com/questions/12690444/css-border-on-png-image-with-transparent-parts */
+
+// Border image utility
 .border-img {
-  -webkit-filter: drop-shadow(1px 1px 0 black) drop-shadow(-1px -1px 0 black);
-  filter: drop-shadow(1px 1px 0 black) drop-shadow(-1px -1px 0 black);
+  @include drop-shadow-border;
 }
 
-#headerimage {
-  background-image: url("art/messi_bg.webp");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
-  background-position: center 10%;
-}
-
-/* Style ONLY the embedded Twitter widget container */
-.twitter-tweet.twitter-tweet-rendered {
-  display: flex !important;
-  width: 550px !important;
-  max-width: 100%;
-  margin-top: 15px !important;
-  margin-bottom: 15px !important;
-  border-radius: 16px;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
-  overflow: auto !important;
-  background: #fff;
-  justify-content: center;
-  height: 400px;
-}
-#extrainfo .twitter-tweet.twitter-tweet-rendered iframe {
-  width: 550px !important;
-  max-width: 100%;
-  min-width: 0 !important;
-  height: 100% !important;
-  border: none;
-  display: block;
-}
-#headerimage{
-  font-family: "Merriweather", serif;
-}
-#headerimage h3 {
-  font-family: "Climate Crisis", sans-serif;
-  font-size: 4rem;
-  padding-left: 15px;
-  background: linear-gradient(to bottom, #3af3f3, #23b8b8, #f86945, #ff8566);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  -webkit-text-stroke: 1px rgb(53, 53, 53);
-}
-
-#altimage {
-  background-image: url("art/icon.webp");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-position: center 40%;
-
-  margin-right: 5px;
-}
-
-#extrainfo {
-  background-image: url("art/background2.webp");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-
-  margin-left: 5px;
-}
-
-/* Custom cursors maybe? */
-/*.part-of-content:not(#footer):not(#header){
-        transition: transform .5s, box-shadow .45s;
-      }
-      .part-of-content:not(#footer):not(#header):hover{
-        transform: scale(1.01);
-        z-index: 999;
-      }*/
-
+// Hover effects
 #altimage,
 #extrainfo {
-  transition: filter 0.4s;
-}
-#altimage:hover,
-#extrainfo:hover {
-  filter: brightness(1.12);
+  transition: $transition-filter;
+
+  &:hover {
+    filter: brightness(1.12);
+  }
 }
 
-#loading{
-    display: none !important;
+// Loading state
+#loading {
+  display: none !important;
 }
