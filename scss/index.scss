@@ -1,5 +1,5 @@
 @import "fonts.scss";
-@import "mobile.scss"
+@import "mobile.scss";
 
 // SASS Variables
 $color-black: rgb(0, 0, 0);
@@ -196,7 +196,7 @@ html {
 
   > #altimage {
     grid-column: 1 / 5;
-    background-image: url("art/icon.webp");
+    background-image: url("art/smol_icon.webp");
     background-repeat: no-repeat;
     background-position: center 40%;
     background-size: 100%;
