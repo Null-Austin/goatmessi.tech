@@ -45,6 +45,12 @@ $transition-color-font: color 0.3s, font-size 0.5s;
   background-position: $position;
   background-size: $size;
 }
+@mixin background-image-hover($url, $size: cover, $position: center, $percent: 100%) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: $position;
+  background-size: $percent;
+}
 
 @mixin drop-shadow-border {
   -webkit-filter: drop-shadow(1px 1px 0 $color-black) drop-shadow(-1px -1px 0 $color-black);
@@ -179,8 +185,15 @@ html {
 
   > #altimage {
     grid-column: 1 / 5;
-    @include background-image("art/icon.webp", cover, center 40%);
+    background-image: url("art/icon.webp");
+    background-repeat: no-repeat;
+    background-position: center 40%;
+    background-size: 100%;
     margin-right: $spacing-tiny;
+    transition: background-size 0.3s;
+    &:hover{
+      background-size: 110%;
+    }
   }
 
   > #extrainfo {
@@ -192,9 +205,18 @@ html {
     justify-content: flex-start;
     overflow: auto;
     padding: 0;
-    @include background-image("art/background2.webp");
+    background-image: url("art/background2.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
     margin-left: $spacing-tiny;
+    transition: background-size 0.3s;
 
+    &:hover{
+      background-size: 110%;
+    }
+
+    // if we ever restore Twitter embeds
     .twitter-tweet.twitter-tweet-rendered {
       display: flex !important;
       width: 550px !important;
@@ -292,9 +314,9 @@ html {
 #extrainfo {
   transition: $transition-filter;
 
-  &:hover {
-    filter: brightness(1.12);
-  }
+  // &:hover {
+  //   filter: brightness(1.12);
+  // }
 }
 
 // Loading state
