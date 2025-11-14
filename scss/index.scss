@@ -13,7 +13,7 @@ $border-radius-twitter: 16px;
 $font-nunito: "Nunito", sans-serif;
 $font-stack-sans: "Stack Sans Headline", sans-serif;
 $font-merriweather: "Merriweather", serif;
-$font-climate-crisis: "Climate Crisis", sans-serif;
+$font-big: "Impact", sans-serif;
 
 $spacing-default: 20px;
 $spacing-small: 10px;
@@ -186,8 +186,9 @@ html {
     }
 
     h3 {
-      font-family: $font-climate-crisis;
-      font-size: 4rem;
+      font-family: $font-big;
+      font-weight: 400;
+      font-size: 8rem;
       padding-left: 15px;
       @include gradient-text(linear-gradient(to bottom, #3af3f3, #23b8b8, #f86945, #ff8566));
       -webkit-text-stroke: 1px $color-gray-dark;
