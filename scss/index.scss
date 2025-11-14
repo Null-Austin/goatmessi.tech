@@ -60,10 +60,12 @@ html {
 }
 #content > #headerimage .hidden a{
     color: white;
+    color: rgba(255, 255, 255, 0);
+    transition: color .3s, font-size .5s;
 }
 #content > #headerimage .hidden{
     display: block;
-    font-size: 0;
+    color: rgba(255, 255, 255, 0);
     transition: color .3s, font-size .5s;
 }
 #content > #headerimage .hidden a, #content > #headerimage:hover .hidden, #content > #headerimage.selected .hidden{
