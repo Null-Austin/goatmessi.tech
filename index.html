@@ -52,10 +52,21 @@
     #content > #extrainfo {
       grid-column: 2 / 3;
       height: 45vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: auto;
+      padding: 0;
     }
     #content > #footer {
       grid-column: 1 / 3;
       height: 10vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      background: rgba(255,255,255,0.95);
     }
 
     #header, #headerimage,
@@ -127,6 +138,29 @@
       background-size: 100%;
       background-position: center 10%;
     }
+
+    /* Style ONLY the embedded Twitter widget container */
+    .twitter-tweet.twitter-tweet-rendered {
+      display: flex !important;
+      width: 550px !important;
+      max-width: 100%;
+      margin-top: 10px !important;
+      margin-bottom: 10px !important;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+      overflow: auto !important;
+      background: #fff;
+      justify-content: center;
+      height: 400px;
+    }
+    #extrainfo .twitter-tweet.twitter-tweet-rendered iframe {
+      width: 550px !important;
+      max-width: 100%;
+      min-width: 0 !important;
+      height: 100% !important;
+      border: none;
+      display: block;
+    }
     #headerimage h3 {
       font-family: "Gasoek One", sans-serif;
       font-size: 4rem;
@@ -181,12 +215,11 @@
     </div>
     <div class="part-of-content" id="altimage"></div>
     <div class="part-of-content" id="extrainfo">
-      And imagine this as a post or any thing else!
+      <blockquote class="twitter-tweet"><p lang="en" dir="ltr">I had a coin once. It was awful. <a href="https://twitter.com/search?q=%24GRUMPY&amp;src=ctag&amp;ref_src=twsrc%5Etfw">$GRUMPY</a> <a href="https://t.co/TxSAiL7is6">https://t.co/TxSAiL7is6</a></p>&mdash; Grumpy Cat (@RealGrumpyCat) <a href="https://twitter.com/RealGrumpyCat/status/1859370077671522607?ref_src=twsrc%5Etfw">November 20, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
     </div>
     <div class="part-of-content" id="footer">
       This is some extra information
     </div>
   </section>
 </body>
-
 </html>
