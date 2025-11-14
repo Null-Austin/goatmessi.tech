@@ -4,8 +4,8 @@
   "description": "https://www.vecteezy.com/members/johndory",
   "main": "index.js",
   "scripts": {
-    "build": "sass scss:docs --no-source-map",
-    "watch": "sass scss:docs --no-source-map --watch"
+    "build": "sass scss:docs --no-source-map --style compressed",
+    "watch": "sass scss:docs --no-source-map --watch --style compressed"
   },
   "repository": {
     "type": "git",
