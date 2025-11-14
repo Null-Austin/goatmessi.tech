@@ -1,3 +1,12 @@
+function renderPhoto(ele, url){
+    let _img = ele;
+    let _bImage = new Image();
+    _bImage.src = url;
+    _bImage.onload = ()=>{
+        _img.style.backgroundImage = `url(${_bImage.src})`;
+    }
+}
+
 document.addEventListener("DOMContentLoaded",dom=>{
     // force the user to hover and unhover to make the model photo smaller!
     // deprecated, i think it looks better expanded
@@ -6,10 +15,5 @@ document.addEventListener("DOMContentLoaded",dom=>{
     // })
 
     // replace small w/ big image
-    let _img = document.querySelector("#altimage");
-    let _bImage = new Image();
-    _bImage.src = "art/big_icon.webp";
-    _bImage.onload = ()=>{
-        _img.style.backgroundImage = `url(${_bImage.src})`;
-    }
+    renderPhoto(document.querySelector("#altimage"), "art/big_icon.webp")
 })
