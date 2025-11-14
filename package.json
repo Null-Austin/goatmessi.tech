@@ -1,0 +1,22 @@
+{
+  "name": "goatmessi.tech",
+  "version": "1.0.0",
+  "description": "https://www.vecteezy.com/members/johndory",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass scss:pub --no-source-map",
+    "watch": "sass scss:pub --no-source-map --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Null-Austin/goatmessi.tech.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Null-Austin/goatmessi.tech/issues"
+  },
+  "homepage": "https://github.com/Null-Austin/goatmessi.tech#readme"
+}
