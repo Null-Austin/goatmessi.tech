@@ -15,6 +15,6 @@ document.addEventListener("DOMContentLoaded",dom=>{
     // })
 
     // replace small w/ big image
-    renderPhoto(document.querySelector("#altimage"), "art/big_icon.webp")
-    renderPhoto(document.querySelector("#extrainfo"), "art/big_background2.webp")
+    renderPhoto(document.querySelector("#altimage"), "images/big_icon.webp")
+    renderPhoto(document.querySelector("#extrainfo"), "images/big_background2.webp")
 })

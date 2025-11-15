@@ -4,8 +4,8 @@
   "description": "https://www.vecteezy.com/members/johndory",
   "main": "index.js",
   "scripts": {
-    "build": "sass scss:docs --no-source-map --style compressed",
-    "watch": "sass scss:docs --no-source-map --watch --style compressed"
+    "build": "node build.js --build",
+    "watch": "node build.js --watch"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/Null-Austin/goatmessi.tech/issues"
   },
-  "homepage": "https://github.com/Null-Austin/goatmessi.tech#readme"
+  "homepage": "https://github.com/Null-Austin/goatmessi.tech#readme",
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "fs-extra": "^11.3.2",
+    "html-minifier-terser": "^7.2.0",
+    "sass": "^1.94.0"
+  }
 }

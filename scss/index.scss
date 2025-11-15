@@ -147,7 +147,7 @@ html {
   > #headerimage {
     grid-column: 1 / 7;
     height: $height-section;
-    @include background-image("art/messi_bg.webp", 100%, center 10%);
+    @include background-image("images/messi_bg.webp", 100%, center 10%);
     transition: $transition-height;
     transition-delay: 100ms;
     font-family: $font-merriweather;
@@ -197,7 +197,7 @@ html {
 
   > #altimage {
     grid-column: 1 / 5;
-    background-image: url("art/smol_icon.webp");
+    background-image: url("images/smol_icon.webp");
     background-repeat: no-repeat;
     background-position: center 40%;
     background-size: 100%;
@@ -217,7 +217,7 @@ html {
     justify-content: flex-start;
     overflow: auto;
     padding: 0;
-    background-image: url("art/background2.webp");
+    background-image: url("images/background2.webp");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
