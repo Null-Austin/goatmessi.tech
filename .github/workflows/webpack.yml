@@ -5,15 +5,18 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:  
+  build:   
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write  # This gives permission to push
 
     steps:
-    - uses:  actions/checkout@v4
+    - uses:   actions/checkout@v4
 
     - name: Use Node.js
       uses: actions/setup-node@v4
-      with: 
+      with:  
         node-version: '20.x'
         cache: 'npm'
 
@@ -22,9 +25,9 @@ jobs:
         npm ci
         npm run build
 
-    - name: Commit build files
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github. com"
+    - name:  Commit build files
+      run:  |
+        git config --local user.email "github-actions[bot]@users.noreply. github.com"
         git config --local user.name "github-actions[bot]"
         git add docs/
         git diff --staged --quiet || git commit -m "Auto-build: Update docs folder"
