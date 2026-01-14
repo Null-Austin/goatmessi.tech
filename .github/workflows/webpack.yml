@@ -1,28 +1,31 @@
-name: Build page
+name: Build and Commit
 
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
-  build:
+  build: 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-
     steps:
-    - uses: actions/checkout@v4
+    - uses:  actions/checkout@v4
 
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js
       uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
+      with: 
+        node-version: '20.x'
+        cache: 'npm'
 
-    - name: Build
+    - name: Install and Build
       run: |
-        npm install
+        npm ci
         npm run build
+
+    - name: Commit build files
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add dist/  # Change to your build folder
+        git diff --staged --quiet || git commit -m "Auto-build:  Update build files"
+        git push
