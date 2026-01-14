@@ -9,6 +9,7 @@ function randomFile(ext) {
   return crypto.randomBytes(8).toString('hex') + ext;
 }
 
+let pages = {}
 async function copyDir(src, dest) {
   await fs.mkdir(dest, { recursive: true });
   const entries = await fs.readdir(src, { withFileTypes: true });
